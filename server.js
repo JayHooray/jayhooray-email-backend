@@ -11,7 +11,7 @@ const transporter = nodemailer.createTransport({
   secure: true,
   auth: {
     user: 'hello@jayhooray.com',
-    pass: 'yourZohoPassword'
+    pass: 'Jahjah303!'
   }
 });
 
@@ -32,5 +32,6 @@ app.post('/signup', (req, res) => {
     res.send('Email sent successfully');
   });
 });
+
 
 app.listen(3000, () => console.log('Server running on port 3000'));
