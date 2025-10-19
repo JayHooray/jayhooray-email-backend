@@ -1,17 +1,17 @@
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
+const cors = require('cors');
 
 const app = express();
+
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
 app.get("/", (req, res) => {
   res.send("Mr. Hooray is live and snapping!");
 });
-
 
 app.post("/signup", async (req, res) => {
   const { email } = req.body;
