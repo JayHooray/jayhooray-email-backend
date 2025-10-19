@@ -21,8 +21,8 @@ app.post("/signup", async (req, res) => {
     port: 587,
     secure: false,
     auth: {
-      user: process.env.ZOHO_USER,
-      pass: process.env.ZOHO_PASS
+      user: "hello@jayhooray.com",
+      pass: "your-app-password"
     }
   });
 
@@ -44,5 +44,6 @@ app.post("/signup", async (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
 
 
