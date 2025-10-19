@@ -27,7 +27,7 @@ app.post("/signup", async (req, res) => {
   });
 
   const mailOptions = {
-    from: `"Mr. Hooray 🎉" <${process.env.ZOHO_USER}>`,
+    from: `"Mr. Hooray 🎉" <hello@jayhooray.com>`,
     to: email,
     subject: "Welcome to JayHooray!",
     html: `<h1>Snap & Spark Activated!</h1><p>You're officially on the list. Mr. Hooray is prepping your bundle with joy and momentum.</p>`
@@ -44,4 +44,5 @@ app.post("/signup", async (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
 
