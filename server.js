@@ -12,23 +12,25 @@ app.get("/", (req, res) => {
   res.send("Mr. Hooray is live and snapping!");
 });
 
-app.post("/signup", async (req, res) => {
-  const { email } = req.body;
-  app.get("/signup", (req, res) => {
+// ✅ BONUS: GET /signup route to prevent "Cannot GET /signup"
+app.get("/signup", (req, res) => {
   res.status(404).send("This route only accepts POST requests.");
 });
 
+app.post("/signup", async (req, res) => {
+  const { email } = req.body;
+  console.log("📬 Received signup request for:", email); // ✅ Add this for logging
+
   const transporter = nodemailer.createTransport({
     host: "smtp.zoho.com",
-    port: 587,         // ✅ TLS port
-    secure: false,     // ✅ Must be false for TLS
+    port: 587,
+    secure: false,
     auth: {
       user: process.env.ZOHO_USER,
       pass: process.env.ZOHO_PASS
     }
   });
 
-  // Optional: verify SMTP connection
   transporter.verify((error, success) => {
     if (error) {
       console.error("SMTP connection failed:", error);
@@ -55,3 +57,8 @@ app.post("/signup", async (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
