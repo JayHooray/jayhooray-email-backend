@@ -14,11 +14,14 @@ app.get("/", (req, res) => {
 
 app.post("/signup", async (req, res) => {
   const { email } = req.body;
+  app.get("/signup", (req, res) => {
+  res.status(404).send("This route only accepts POST requests.");
+});
 
   const transporter = nodemailer.createTransport({
     host: "smtp.zoho.com",
-    port: 587,         // 
-    secure: false,     // 
+    port: 587,         // ✅ TLS port
+    secure: false,     // ✅ Must be false for TLS
     auth: {
       user: process.env.ZOHO_USER,
       pass: process.env.ZOHO_PASS
