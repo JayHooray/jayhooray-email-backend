@@ -12,14 +12,14 @@ app.get("/", (req, res) => {
   res.send("Mr. Hooray is live and snapping!");
 });
 
-// ✅ BONUS: GET /signup route to prevent "Cannot GET /signup"
+// ✅ BONUS: Prevent "Cannot GET /signup"
 app.get("/signup", (req, res) => {
   res.status(404).send("This route only accepts POST requests.");
 });
 
 app.post("/signup", async (req, res) => {
   const { email } = req.body;
-  console.log("📬 Received signup request for:", email); // ✅ Add this for logging
+  console.log("📬 Received signup request for:", email);
 
   const transporter = nodemailer.createTransport({
     host: "smtp.zoho.com",
@@ -57,8 +57,5 @@ app.post("/signup", async (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-});
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
